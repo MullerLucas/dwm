@@ -1,0 +1,15 @@
+[Unit]
+Description=Systray for dwm
+After=network.target
+
+[Service]
+Type=exec
+Restart=always
+RestartSec=1
+User=lucas
+; Group=lucas
+; WorkingDirectory=~
+ExecStart=~/.local/bin/dwm_utils/systray/dwm_systray
+
+[Install]
+WantedBy=multi-user.target
