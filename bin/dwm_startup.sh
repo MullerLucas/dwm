@@ -1,14 +1,15 @@
 #!/bin/bash
 
 # Auto Start
-~/.local/bin/dwm/systray/dwm_systray.sh &
 
 nitrogen --restore &
-ckb-netxt -b -c &
-picom &
+#ckb-netxt -b -c &
+#picom &
 
-[[ -f ~/.Xresources ]] && xrdb -I$HOME ~/.Xresources
-xset r rate 250 35
+#[[ -f ~/.Xresources ]] && xrdb -I$HOME ~/.Xresources
+#xset r rate 250 35
+
+~/.local/bin/dwm/systray/dwm_systray.sh &
 
 # Start & Restart DWM
 while true; do
