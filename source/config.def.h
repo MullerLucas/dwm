@@ -3,7 +3,8 @@
 #include "colorDef.h"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -105,6 +106,12 @@ static Key keys[] = {
 	{ MODKEY|AltMask,				XK_l,		tagmon,         {.i = -1 } },
 	//{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY|AltMask,				XK_h,		tagmon,         {.i = +1 } },
+	// FULLGAPS
+	//{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+	{ MODKEY,                       XK_g,		setgaps,        {.i = -1 } },
+	//{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|AltMask,               XK_g,		setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_g,		setgaps,        {.i = 0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
