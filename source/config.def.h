@@ -6,8 +6,10 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+
 //static const char *fonts[]          = { "monospace:size=10" };
 static const char *fonts[]          = { "JetBrainsMonoMedium Nerd Font:size=10", "JetBrainsMono Nerd Font:size=10", "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -33,10 +35,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class			instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",			NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",		NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Thunderbird",	NULL,		NULL,       1 << 8,		  0,           -1 },
+	/* class			instance	title       tags mask		isfloating	isterminal  noswallow	monitor */
+	{ "Alacritty",		NULL,		NULL,		0,				0,			1,			0,			-1 },
+	{ "Gimp",			NULL,		NULL,		0,				1,			0,			0,			-1 },
+	{ "Firefox",		NULL,       NULL,       1 << 8,			0,          0,			0,			-1 },
+	{ "Thunderbird",	NULL,		NULL,       1 << 8,			0,          0,			0,			-1 },
+	{ "vmixer",			NULL,		NULL,       1 << 8,			1,          0,			0,			-1 },
+	{ "pavucontrol",	NULL,		NULL,       1 << 8,			1,          0,			0,			-1 },
 };
 
 /* layout(s) */
@@ -72,6 +77,8 @@ static const char *dmenucmd[] = { "dmenu_runDefault", NULL };
 //static const char *termcmd[]  = { "st", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *webcmd[]  = { "brave", NULL };
+static const char *audiomixer1cmd[] = { "vmixer", NULL };
+static const char *audiomixer2cmd[] = { "pavucontrol", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -123,6 +130,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,			            XK_w,      spawn,          {.v = webcmd } },
+	{ MODKEY,			            XK_v,      spawn,          {.v = audiomixer1cmd } },
+	{ MODKEY|ShiftMask,				XK_v,      spawn,          {.v = audiomixer2cmd } },
 };
 
 /* button definitions */
