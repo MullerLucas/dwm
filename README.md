@@ -2,7 +2,7 @@
 
 ## General
 
-* This is fork of DWM (https://dwm.suckless.org/)
+* This a is fork of DWM (https://dwm.suckless.org/)
 
 ## Patches
 
